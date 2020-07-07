@@ -50,7 +50,9 @@
         [false, "log "+ rpltTag +" runtime", rpltTag +" rt", elementContainer], // default false;
 
         // ==== script unique ====
-        [false, "enable full delete", rpltTag +" f repl", elementContainer], // default true;
+        [true, "enable special replace", "SP repl", elementContainer], // default true;
+        [true, "enable full delete", "full repl", elementContainer], // default true;
+        [false, "add tag", "add dlt tag", elementContainer], // default true;
     ];
 
     elementContainer = 2; // ==== container 2 =====================================================|
@@ -71,14 +73,17 @@
 
         // ==== script unique ====
         [true, "enable "+ fhdTag +" css", "enbl "+ fhdTag +" css", elementContainer], // default true;
+        [false, "delete delete2", "dlt dlt2", elementContainer], // default true;
+        [false, "disable delete", "dsbl dlt", elementContainer], // default false; disable to check double check deleted items.
     ]);
 
     elementContainer = 3; // ==== container 3 =====================================================|
     scriptOptionsArray = scriptOptionsArray.concat([
         // ==== gen options ====
+        
+        [false, "run when ready", "run d.ready", elementContainer], // default false;
+        [true, "run when loaded", "run w.load", elementContainer], // default false;
         [false, "autohide notifications", "temp notif", elementContainer], // default false;
-        [true, "delete delete2", "dlt dlt2", elementContainer], // default true;
-        [false, "disable delete", "dsbl dlt", elementContainer], // default false; disable to check double check deleted items.
     ]);
 
     elementContainer = 4; // ==== container 4 =====================================================|
@@ -149,8 +154,8 @@
         */
 
         // prepend = push
-        jQuery("#"+ ctbContainerId).append("<div id='"+ openButtonId +"' class='"+ otherStartingStateClass +" ctb-green ctb-rounded-block'>s opt open</div>");
-        jQuery("#"+ ctbContainerId).append("<div id='"+ hideButtonId +"' class='"+ startingStateClass +" ctb-red ctb-rounded-block'>s opt hide</div>");
+        jQuery("#"+ ctbContainerId).append("<div id='"+ openButtonId +"' class='"+ otherStartingStateClass +" ctb-green ctb-rounded-block'>open options</div>");
+        jQuery("#"+ ctbContainerId).append("<div id='"+ hideButtonId +"' class='"+ startingStateClass +" ctb-red ctb-rounded-block'>hide options</div>");
         jQuery("#"+ ctbContainerId).append('<div id="'+ containerId0 +'" class="'+ startingStateClass +'"></div>');
         
         jQuery("#"+ containerId0).append('<div id="'+ containerId1 +'" class="script-option-block"></div>');
@@ -197,11 +202,14 @@
     }
 
     #ctb-main-container input[type=checkbox] {
+        opacity: 1;
+        position: static;
+        left: 0;
         display: inline-block !important;
         webkit-appearance: button;
 
-        max-width: 15px;
-        max-height: 15px;
+        min-width: 15px;
+        min-height: 15px;
         margin: 0 3px;
         float: left;
     }
